@@ -65,7 +65,7 @@ function App() {
     Name:'',
     Rank:'',
     Date:'',
-    Type:"i"
+    Type:"I"
   })
 
   const handleIndividualChange = (event) =>{
