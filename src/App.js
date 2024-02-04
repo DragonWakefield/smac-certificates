@@ -89,6 +89,7 @@ function App() {
 
   return (
     <div className="App">
+      <title>Smac Certificates</title>
       <header className="App-header">
         <h1>SMAC Certificates</h1>
       </header>
