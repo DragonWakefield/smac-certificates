@@ -113,18 +113,18 @@ function App() {
             <Form.Control className='mt-2' type="text" id="Name"  placeholder='Name...' value={individualData.Name} onChange={handleIndividualChange} required></Form.Control>
             <Form.Select className='mt-2' label="Ranks" id="Rank"  value={individualData.Rank} onChange={handleIndividualChange}  required>
               <option>Select Ranks</option>
-              <option value="White">White</option>
-              <option value="Yellow">Yellow</option>
-              <option value="Orange">Orange</option>
-              <option value="Purple">Purple</option>
-              <option value= "Blue">Blue</option>
-              <option value="Blue w/ Stripe">Blue/St</option>
-              <option value="Green">Green</option>
-              <option value="Green w/ Stripe">Green w/ Stripe</option>
-              <option value="Green w/ 2 Stripe">Green w/ 2 Stripe</option>
-              <option value="Brown">Brown</option>
-              <option value="Brown w/ Stripe">Brown w/ Stripe</option>
-              <option value="Brown w/ 2 Stripe">Brown w/ 2 Stripe</option>
+              <option value="White Sash">White</option>
+              <option value="Yellow Sash">Yellow</option>
+              <option value="Orange Sash">Orange</option>
+              <option value="Purple Sash">Purple</option>
+              <option value= "Blue Sash">Blue</option>
+              <option value="Blue Sash w/ Stripe">Blue/St</option>
+              <option value="Green Sash">Green</option>
+              <option value="Green Sash w/ Stripe">Green w/ Stripe</option>
+              <option value="Green Sash w/ 2 Stripe">Green w/ 2 Stripe</option>
+              <option value="Brown Sash">Brown</option>
+              <option value="Brown Sash w/ Stripe">Brown w/ Stripe</option>
+              <option value="Brown Sash w/ 2 Stripe">Brown w/ 2 Stripe</option>
             </Form.Select>
             <Form.Control  className='mt-2' type="date" id="Date" value={individualData.Date} onChange={handleIndividualChange}  required/>
             <Button className="mt-3" variant="primary" type="submit">
