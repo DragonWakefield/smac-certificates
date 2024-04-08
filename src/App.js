@@ -15,35 +15,37 @@ function App() {
   //   Rank:'',
   //   Date:''
   // })
-  const onFileSubmit = (event) =>{
+  const onFileSubmit = (event) => {
     event.preventDefault(); 
     const file = event.target.files[0];
 
     if (file) {
       const reader = new FileReader();
-      reader.onload = (event) => {
+      reader.onload = async (event) => {  // Make this async to use await inside
         const csvText = event.target.result;
   
         Papa.parse(csvText, {
-          header: false, // Do not treat the first row as headers
-          dynamicTyping: true, // Attempt to convert numeric values to numbers
-          complete: (result) => {  
+          header: false,
+          dynamicTyping: true,
+          complete: async (result) => {  // Make this async to use await inside
             const data = result.data;
             if (data && data.length > 2) {
               setCsvData(data);
-              data.slice(2).forEach((rowData) => {
-                const indexedData = {
-                  Name: rowData[0],
-                  Rank: rowData[2],
-                  Date: rowData[3],
-                  Type: "C"
-                };
 
-                if (indexedData.Name != null){
-                  FillPDF(indexedData);
-                }
-                
-              });
+              // Prepare data for PDF creation
+              const dataEntries = data.slice(2).map(rowData => ({
+                Name: rowData[0],
+                Rank: rowData[2],
+                Date: rowData[3],
+                Type: "C"
+              })).filter(entry => entry.Name != null);
+
+              if (dataEntries.length > 0) {
+                console.log(dataEntries);
+                await FillPDF(dataEntries, 'SMAC-Certificates.pdf');
+              } else {
+                console.error('No valid data found in CSV.');
+              }
             } else {
               console.error('CSV Data is empty or undefined.');
             }
@@ -56,7 +58,8 @@ function App() {
   
       reader.readAsText(file);
     }
-  };
+};
+
 
 //#endregion
 
@@ -77,8 +80,8 @@ function App() {
   }
 
   const onIndividualSubmit = (event) => {
-      event.preventDefault();
-      CreatePDF(individualData);
+    event.preventDefault();
+    FillPDF(individualData, individualData.Name + '-certificate.pdf');  // Pass individual data with a specific filename
   };
 //#endregion
 
