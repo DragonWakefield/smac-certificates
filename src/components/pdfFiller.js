@@ -10,7 +10,7 @@ const createCertificatePage = async (props, templateBytes) => {
     form.getTextField("Rank").setText(props.Rank);
     form.getTextField("Date").setText(props.Date);
 
-    form.flatten();
+ 
     return pdfDoc;
 };
 
