@@ -17,7 +17,7 @@ const createCertificatePage = async (props, templateBytes) => {
 // Main function to handle the creation of certificates
 const FillPDF = async (dataEntries, filename) => {
     // Fetch the template only once and reuse its bytes
-    const templateBytes = await fetch("./templates/cert.pdf").then(res => res.arrayBuffer());
+    const templateBytes = await fetch("./templates/cert2.pdf").then(res => res.arrayBuffer());
     const finalPdfDoc = await PDFDocument.create();
 
     if (!Array.isArray(dataEntries)) {
